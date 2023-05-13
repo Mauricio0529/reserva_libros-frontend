@@ -1,0 +1,84 @@
+<!-- Section: Design Block -->
+<section class="text-center">
+    <!-- Background image -->
+    <div class="p-5 bg-image" style="
+          background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
+          height: 20px;">
+    </div>
+    <!-- Background image -->
+  
+    <div class="card mx-4 mx-md-5 shadow-5-strong" style="
+          margin-top: -80px;
+          background: hsla(0, 0%, 100%, 0.8);
+          backdrop-filter: blur(30px);
+          ">
+      <div class="card-body py-5 px-md-5">
+  
+        <div class="row d-flex justify-content-center">
+          <div class="col-lg-8">
+            <h2 class="fw-bold mb-5">Registrate ahora</h2>
+            <form>
+                <div class="form-outline mb-4">
+                    <input type="number" id="form3Example3" class="form-control" />
+                    <label class="form-label" for="form3Example3">Numero de identificacion</label>
+                </div>
+              <!-- 2 column grid layout with text inputs for the first and last names -->
+              <div class="row">
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="form3Example1" class="form-control" />
+                    <label class="form-label" for="form3Example1">Nombre</label>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <input type="text" id="form3Example2" class="form-control" />
+                    <label class="form-label" for="form3Example2">Apellido</label>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="number" id="form3Example2" class="form-control" />
+                      <label class="form-label" for="form3Example2">Numero de celular</label>
+                    </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="text" id="form3Example2" class="form-control" />
+                      <label class="form-label" for="form3Example2">Nombre usuario</label>
+                    </div>
+                </div>
+              
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="email" id="form3Example2" class="form-control" />
+                      <label class="form-label" for="form3Example2">Correo electronico</label>
+                    </div>
+                </div>
+                <div class="col-md-6 mb-4">
+                    <div class="form-outline">
+                      <input type="password" id="form3Example2" class="form-control" />
+                      <label class="form-label" for="form3Example2">Contraseña</label>
+                    </div>
+                </div>
+              </div>
+  
+              <!-- Submit button -->
+              <button type="submit" class="btn btn-primary btn-block mb-4" (click)="signUp()">
+                Registrarse
+              </button>
+  
+              <!-- Register buttons -->
+              <div class="text-center">
+                <p class="small  mt-2 pt-1 mb-0">¿Ya tienes una cuenta? 
+                <a routerLink="../inicio-sesion" class="text-body fw-bold register" >Incia Sesion</a></p>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Section: Design Block -->
