@@ -15,9 +15,9 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent
   ],
-  
   exports: [
-    LoginComponent
+    LoginComponent,
+    RegisterComponent // borrar
   ],
 
   imports: [

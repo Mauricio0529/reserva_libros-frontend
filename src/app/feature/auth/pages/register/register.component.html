@@ -1,5 +1,5 @@
 <!-- Section: Design Block -->
-<section class="text-center">
+<section >
     <!-- Background image -->
     <div class="p-5 bg-image" style="
           background-image: url('https://mdbootstrap.com/img/new/textures/full/171.jpg');
@@ -16,64 +16,82 @@
   
         <div class="row d-flex justify-content-center">
           <div class="col-lg-8">
-            <h2 class="fw-bold mb-5">Registrate ahora</h2>
-            <form>
+            <h2 class="fw-bold mb-5 text-center">Registrate ahora</h2>
+
+            <form [formGroup]="registerForm">
+              
                 <div class="form-outline mb-4">
-                    <input type="number" id="form3Example3" class="form-control" />
-                    <label class="form-label" for="form3Example3">Numero de identificacion</label>
+                  <label class="form-label" for="form3Example3">Numero de identificación</label>
+                  <input type="text" formControlName="cardId" id="form3Example3" class="form-control" placeholder="Numero de identificación"/>
+                  <span class="text-danger">{{getErrorsFrom('cardId')}}</span>
                 </div>
               <!-- 2 column grid layout with text inputs for the first and last names -->
               <div class="row">
+
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="text" id="form3Example1" class="form-control" />
                     <label class="form-label" for="form3Example1">Nombre</label>
+                    <input type="text" formControlName="name" id="form3Example1" class="form-control" placeholder="Nombre" />
+                    <span class="text-danger">{{getErrorsFrom('name')}}</span>
                   </div>
                 </div>
+
                 <div class="col-md-6 mb-4">
                   <div class="form-outline">
-                    <input type="text" id="form3Example2" class="form-control" />
                     <label class="form-label" for="form3Example2">Apellido</label>
+                    <input type="text" formControlName="lestName" id="form3Example2" class="form-control" placeholder="Apellido" />
+                    <span class="text-danger">{{getErrorsFrom('lestName')}}</span>
+                  </div>
+                </div>
+
+                <div class="col-md-6 mb-4">
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example2">Nombre usuario</label>
+                    <input type="text" formControlName="username" id="form3Example2" class="form-control" placeholder="Nombre de usuario" />
+                    <span class="text-danger">{{getErrorsFrom('username')}}</span>
                   </div>
                 </div>
 
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="number" id="form3Example2" class="form-control" />
-                      <label class="form-label" for="form3Example2">Numero de celular</label>
+                      <label class="form-label" for="form3Example2">Correo institucional</label>
+                      <input type="email" formControlName="email" id="form3Example2" 
+                      class="form-control" placeholder="Correo institucional"
+                      [ngClass]="{'error': isTochedField(registerForm, 'email')}"/>
+                      <span class="text-danger">{{getErrorsFrom('email')}}</span>
                     </div>
                 </div>
 
                 <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example2" class="form-control" />
-                      <label class="form-label" for="form3Example2">Nombre usuario</label>
-                    </div>
+                  <div class="form-outline">
+                    <label class="form-label" for="form3Example2">Numero de celular</label>
+                    <input type="text" formControlName="numberCellPhone" id="form3Example2" class="form-control" placeholder="Numero de celular" />
+                    <span class="text-danger">{{getErrorsFrom('numberCellPhone')}}</span>
+                  </div>
                 </div>
-              
+
+                <!--
                 <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="email" id="form3Example2" class="form-control" />
-                      <label class="form-label" for="form3Example2">Correo electronico</label>
-                    </div>
-                </div>
-                <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="password" id="form3Example2" class="form-control" />
                       <label class="form-label" for="form3Example2">Contraseña</label>
+                      <input type="password" formControlName="password" id="form3Example2" class="form-control" placeholder="Contraseña" />
+                      <span class="text-danger">{{getErrorsFrom('password')}}</span>
                     </div>
                 </div>
+              -->
               </div>
   
               <!-- Submit button -->
-              <button type="submit" class="btn btn-primary btn-block mb-4" (click)="signUp()">
-                Registrarse
-              </button>
+              <div class="text-center">
+                <button type="submit" class="btn btn-primary btn-block mb-4 " (click)="signUp()">
+                  Registrarse
+                </button>
+              </div>
   
               <!-- Register buttons -->
               <div class="text-center">
                 <p class="small  mt-2 pt-1 mb-0">¿Ya tienes una cuenta? 
-                <a routerLink="../inicio-sesion" class="text-body fw-bold register" >Incia Sesion</a></p>
+                <a routerLink="../inicio-sesion" class="text-body fw-bold register login" >Incia Sesion</a></p>
               </div>
             </form>
           </div>

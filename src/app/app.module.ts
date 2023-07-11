@@ -6,7 +6,8 @@ import { AppComponent } from './app.component';
 
 import { AuthModule } from './feature/auth/auth.module';
 
-import { HttpClientModule } from "@angular/common/http";
+import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
+import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 
 @NgModule({
   declarations: [
@@ -20,8 +21,13 @@ import { HttpClientModule } from "@angular/common/http";
     HttpClientModule
   ],
 
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi:true
+    }
+  ],
+
+  bootstrap: [AppComponent],
 })
 
 export class AppModule { }

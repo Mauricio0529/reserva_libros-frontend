@@ -1,0 +1,74 @@
+<header>
+    <app-navbar></app-navbar>
+</header>
+
+<div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Codigo Factura</th>
+        <th scope="col">Cedula cliente</th>
+        <th scope="col">Fecha reserva</th>
+        <th scope="col">Fecha entrega</th>
+        <th scope="col">Total</th>
+        <th scope="col">Ver detalles</th>
+      </tr>
+      </thead>
+      <tbody>
+  
+  
+      <tr class="table-success" *ngFor="let history of historyReserves">
+        <td>{{history.id}}</td>
+        <td>{{history.customerCardId}}</td>
+        <td>{{history.dateDelivery}}</td>
+        <td>{{history.dateReserves}}</td>
+        <td>{{history.totalReserves}}</td>
+        <td><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#lista-books" (click)="showBooksReserved(history.bookReservesEntities)">Mostrar</button></td>
+      </tr>
+  
+      </tbody>
+    </table>
+  
+    <!--<button type="button" class="btn btn-info" (click)="registerReserve()">Registrar compra</button>-->
+</div>
+
+  
+<!--
+  MODAL PARA VER LOS LIBROS
+-->
+<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="lista-books" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Lista de libros reservados</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Codigo de libro</th>
+                <th scope="col">Usuario</th>
+                <th scope="col">Titulo</th>
+                <th scope="col">Cantidad</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr class="table-success" *ngFor="let book of bookReserves">
+              <td>{{book.bookId}}</td>
+              <td>{{nameCustomer}}</td>
+              <td>
+                <img src="{{book.imagePath}}" style="width: 5rem; height: 5rem;" class="card-img-top" alt="...">
+                {{book.title}}
+              </td>
+              <td>{{book.quantity}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>

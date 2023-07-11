@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { lastValueFrom } from 'rxjs';
 import { AuthLoginRequest } from 'src/app/core/models/authLoginRequest';
-import { LoginService } from 'src/app/core/service/login.service';
+import { AuthService } from 'src/app/core/service/auth.service';
+import { TokenService } from 'src/app/core/service/token.service';
 import { AppBaseComponent } from 'src/app/core/utils/AppBaseComponent';
 
 @Component({
@@ -21,7 +23,9 @@ export class LoginComponent extends AppBaseComponent {
   constructor(
     private router: Router, 
     private fb: FormBuilder,
-    private loginService: LoginService
+    private loginService: AuthService,
+    private tokenService: TokenService
+
     ) {
     super();
     this.loginFrom = this.fb.group({
@@ -33,11 +37,11 @@ export class LoginComponent extends AppBaseComponent {
   ngOnInit(): void {
   }
 
-  public signIn():void {
+  public async signIn(): Promise<void> {
     let dtoLogin: AuthLoginRequest;
-    
+    // let dtoLogin: AuthLoginRequest = this.loginFrom.value;
+
     if(this.loginFrom.valid) {
-      alert("Login");
       let emailInput = this.loginFrom.get('email').value;
       let passwordInput = this.loginFrom.get('password').value;
       
@@ -49,11 +53,23 @@ export class LoginComponent extends AppBaseComponent {
         'password': passwordInput
       }
 
-      this.loginService.signIn(dtoLogin);
+      /**
+       * await, primero que se ejecute el servicio login antes de cualquier cosa.
+       * espera a que se ejecute el servicio de login.
+       * lastValueFrom castea un Observable a un Promise.
+       * quiero que se ejecute este servicio,
+       * para que luego se ejecute el console.log(localStorage.getItem("token"));
+       */
+      await lastValueFrom(this.loginService.signIn(dtoLogin));
 
-      console.log(dtoLogin);
+      console.log(this.tokenService.getToken());
+
+      // redirige al catalogo de libros
+      await this.router.navigateByUrl("/catalogo");
+
     } else {
-      alert("Campos vacios");
+      // validar si el formulario esta mal
+      this.loginFrom.markAllAsTouched();
     }
   }
 

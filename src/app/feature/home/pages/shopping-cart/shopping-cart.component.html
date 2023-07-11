@@ -1,0 +1,35 @@
+<header>
+    <app-navbar></app-navbar>
+</header>
+
+<!-- si la reserva no ha sido guardado, me muetre el carrito-->
+<div *ngIf="reservesSaved == false">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Codigo libro</th>
+        <th scope="col">Nombre libro</th>
+        <th scope="col">Cantidad unidades</th>
+      </tr>
+      </thead>
+      <tbody>
+  
+  
+      <tr class="table-success" *ngFor="let book of listBooksReserves">
+        <td>{{book.bookId}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.quantity}}</td>
+      </tr>
+  
+      </tbody>
+    </table>
+  
+    <button type="button" class="btn btn-info" (click)="registerReserve()">Realizar reserva</button>
+</div>
+  
+<!-- 
+  aqui puedo colocar mas informacion sobre la reserva
+  nombre de usuario, los libros y la fecha
+-->
+<!-- ESTE SERIA EL CODIGO QR -->
+<h1 *ngIf="reservesSaved == true">Tu código de reserva es: {{numberReserves}}. Guardalo por favor</h1>

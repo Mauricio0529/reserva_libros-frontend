@@ -13,6 +13,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "sweetalert2"
+            ],
             "outputPath": "dist/reservas_libros",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -24,7 +27,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "./node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.js"
@@ -94,7 +98,8 @@
             ],
             "styles": [
               "src/styles.css",
-              "./node_modules/bootstrap/dist/css/bootstrap.css"
+              "./node_modules/bootstrap/dist/css/bootstrap.css",
+              "./node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "scripts": [
               "./node_modules/bootstrap/dist/js/bootstrap.js"

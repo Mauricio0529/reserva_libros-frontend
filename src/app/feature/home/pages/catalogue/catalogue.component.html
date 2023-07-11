@@ -1,0 +1,22 @@
+<header>
+  <app-navbar></app-navbar>
+</header>
+
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-1">
+    <div class="col" *ngFor="let book of listBook">
+        <div class="card " style="width: 20rem; align-items: center;">
+            <img src="{{book.imagePath}}" style="width: 10rem; height: 13rem;" class="card-img-top" alt="...">
+            <div class="card-body">
+              <h5 class="card-title">{{book.title}}</h5>
+              <p class="card-text">{{book.description}}</p>
+              <a class="btn btn-primary" *ngIf="book.active == 1" (click)="addBookReservesCart(book)">Agregar a reservas</a>
+              
+              <a class="btn btn-danger" *ngIf="book.active == 1" (click)="deletedBookReservesCart(book)">Eliminar reserva</a>
+              
+              <!-- CON BASE DE DATOS -->
+              <p style = "color: red; font-weight: bold" class="card-text" *ngIf="book.active == 0">Libro Reservado</p>
+
+            </div>
+        </div>
+    </div>
+</div>
