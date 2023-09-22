@@ -1,1 +1,34 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* styles.css (o tu-componente.component.css si lo prefieres) */
+.sweet-alert-popup {
+    background-color: #f0f0f0;
+    border: 2px solid #ccc;
+  }
+  
+  .sweet-alert-title {
+    color: #ff0000;
+  }
+  
+  .sweet-alert-content {
+    font-size: 18px;
+    line-height: 1.5;
+  }
+  
+  .sweet-alert-confirm-btn {
+    background-color: #007bff;
+    color: #fff;
+  }
+  
+.sweet-alert-container {
+}
+
+.parrafo {
+  font-size: 30px;
+  margin-bottom: 25px;
+}
+
+
+.container-text {
+  
+}

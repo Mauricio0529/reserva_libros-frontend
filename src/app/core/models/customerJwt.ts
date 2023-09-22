@@ -2,7 +2,7 @@ export interface CustomerJwt {
     /**
      * Interface del cliente jwt
      */
-    cardId: number; // integer
+    cardId: number; // integer, La identificacion estudiantil o cedula
     name: string;
     lestName: string;
     username: string;

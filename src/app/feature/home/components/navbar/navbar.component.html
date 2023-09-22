@@ -1,38 +1,61 @@
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
+<!--fixed-top-->
+<nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top" style="background:#fb4434;">
     <div class="container-fluid">
-      <a class="navbar-brand" routerLink="../">Biblioteca Col</a>
+      <a class="navbar-brand" routerLink="/catalogo">
+        <img src="https://img.freepik.com/vector-gratis/plantilla-logotipo-libro_23-2149676821.jpg?w=740&t=st=1689567413~exp=1689568013~hmac=ffaa18eb1d5d23bb12acd79f624919aa1027b0cf1d358f3bdcfa36c9ef9e6a4a" width="80" height="75" class="d-inline-block align-top" alt="">
+      </a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navbarText">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" routerLink="../">Catalogo</a>
+            <a class="nav-link active" style="color: #fbe1dd; font-size: 1.1em;" aria-current="page" routerLink="/catalogo">Catalogo</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Categorias</a>
+            <a class="nav-link" style="color: #fbe1dd; font-size: 1.1em;">Categorias</a>
+          </li>
+          
+          <li class="nav-item">
+            <a class="nav-link" style="color: #fbe1dd; font-size: 1.1em;" routerLink="/catalogo/historial">Historal</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" routerLink="../catalogo/historial">Historal</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Bienvenido, {{nameCustomer}}</a>
+            <a class="nav-link" style="color: #fbe1dd; font-size: 1.1em;" routerLink="/catalogo/reserve-status">Estado reserva</a>
+            <!-- 
+              En este modulo va:
+              las etapas del proceso de reserva.
+              * contiene un slip de navegacion horizontal que contenga tres estados: En proceso | Aprobado | Finalizado
+               * En proceso: va a tener una lista card tipo notificacion que contenga 
+               (codigo: 1235        Estado: En proceso)
+               este se va llenando a medida que se va reservando.
+               Al momento de dar clic en el card de notificacion, se mostrara el detalle de la reserva que ya tengo
+               * Aprobado: va a tener una lista card tipo notificacion que contenga 
+               (codigo: 1235        Estado: Aprobado)
+               este se va llenando a medida que se va aprobando la reserva con el encargado de la biblioteca.
+               Al momento de dar clic en el card de notificacion, se mostrara el detalle de la reserva que ya tengo.
+                * Finalizado: va a tener una lista card tipo notificacion que contenga 
+               (codigo: 1235        Estado: Finalizado)
+               este se va llenando a medida que se va finalizando(entregando los libros) la reserva con el encargado de la biblioteca.
+               Al momento de dar clic en el card de notificacion, se mostrara el detalle de la reserva que ya tengo
+            -->
           </li>
         </ul>
         
         <strong>
-          <span class="navbar-text me-5" style="cursor:pointer" routerLink="../catalogo/reservas">
+          <span class="navbar-text me-5" style="cursor:pointer; color: #fbe1dd;" routerLink="/catalogo/reservas">
               Mis reservas
           </span>
           
-          <span class="navbar-text me-5" style="cursor:pointer" routerLink="../catalogo/reservas">
+          <span class="navbar-text me-5" style="cursor:pointer; color: #fbe1dd;" routerLink="/catalogo/reservas">
             {{numberBook}}
         </span>
         </strong>
-        <!--<li class="nav-item">
-          <a class="nav-link"  routerLink="../reservas">Reservas</a>
-        </li>--> 
-        <button class="btn btn-success" type="submit" (click)="SignOff()">Cerrar Sesion</button>
+
+<!-- 
+  Direcciones con navbar
+  https://www.youtube.com/watch?v=ADEZTrIxj1k 
+-->
+        <button class="btn btn-success" style="background: #9e332c; border-color: #fb4434;" type="submit" (click)="SignOff()">Cerrar Sesion</button>
       </div>
     </div>
   </nav>

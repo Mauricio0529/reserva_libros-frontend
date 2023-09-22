@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CatalogueComponent } from './pages/catalogue/catalogue.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { HitoryReservesComponent } from './pages/hitory-reserves/hitory-reserves.component';
+import { ReserveStatusComponent } from './pages/reserve-status/reserve-status.component';
 
 const routes: Routes = [
   {
@@ -16,7 +17,11 @@ const routes: Routes = [
   {
     path: 'historial',
     component: HitoryReservesComponent,
-  }
+  },
+  {
+    path: 'reserve-status',
+    component: ReserveStatusComponent,
+  },
 
 ]; 
 

@@ -1,35 +1,243 @@
 <header>
-    <app-navbar></app-navbar>
+  <app-navbar></app-navbar>
 </header>
 
-<!-- si la reserva no ha sido guardado, me muetre el carrito-->
-<div *ngIf="reservesSaved == false">
+
+<h1 class="title-reserves">Mi Reservas <p *ngIf="reservesSaved == true" style="color: rgb(202, 202, 33); font-size: 30px;">Estado: En proceso</p>
+</h1>
+<!--<h1 class="title-reserves">Mi Reservas 
+  <p *ngIf="reservesSaved == false" style="color: rgb(202, 202, 33); font-size: 30px;">En proceso</p>
+  <p *ngIf="reservesSaved == false" style="color: rgb(33, 192, 33); font-size: 30px;">/Aprobado</p>
+  <p *ngIf="reservesSaved == false" style="color: rgba(30, 70, 164, 0.846); font-size: 30px;">/Finalizado</p>
+</h1>
+-->
+
+<!-- si la reserva no ha sido guardado, me muetre el carrito
+*ngIf="reservesSaved == false"
+-->
+<div *ngIf="reservesSaved == false" class="container-tb">
     <table class="table">
       <thead>
       <tr>
-        <th scope="col">Codigo libro</th>
-        <th scope="col">Nombre libro</th>
-        <th scope="col">Cantidad unidades</th>
+        <th scope="col" class="thead-th">Codigo libro</th>
+        <th scope="col" class="thead-th">Nombre libro</th>
+        <th scope="col" class="thead-th">Autor</th>
+        <th scope="col" class="thead-th">Cantidad unidades</th>
+        <th scope="col" class="thead-th">Eliminar</th>
       </tr>
       </thead>
       <tbody>
   
-  
-      <tr class="table-success" *ngFor="let book of listBooksReserves">
-        <td>{{book.bookId}}</td>
+      <tr *ngFor="let book of listBooksReserves">
+        <th scope="row"># {{book.bookId}}</th>
         <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
+        <td>{{book.quantity}}</td>
+        <td> <!--  (click)="deleteBookReserves(book)" -->
+          <button type="button" class="btn btn-delete" (click)="deleteBookReserves(book)">Eliminar</button>
+        </td>
+      </tr>
+  
+      </tbody>
+    </table>
+
+    <div class="div-reserve">
+      <button type="button" class="btn btn-reserve" data-bs-toggle="modal" 
+      data-bs-target="#modal-reserves" (click)="uploadInformationModal()">Continuar</button> <!-- (click)="uploadInformationModal()" -->
+    </div>
+    <br>
+  </div>
+
+  <!-- MODAL PARA CONFIMAR DATOS DE RESERVA -->
+
+<!--*********************** listBooksReserves.length != 0 -->
+<!-- *ngIf="showModalReserves == true && listBooksReserves != null -->
+  <div *ngIf="showModalReserves == true && listBooksReserves != null" class="modal fade"
+  id="modal-reserves" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel"> Confirmar datos de la reserva </h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <!-- **************** -->
+        
+          <!--<div class="card mx-4 mx-md-5 shadow-5-strong" style="
+            margin-top: -80px;
+            background: hsla(0, 0%, 100%, 0.8);
+            backdrop-filter: blur(30px);
+            ">
+            <div class="card-body py-5 px-md-5">
+            -->
+              <div class="row d-flex justify-content-center"> 
+                <div class="col-lg-8">
+
+                  <form [formGroup]="registerReservesForm">
+
+                    <!-- 2 column grid layout with text inputs for the first and last names -->
+                    <div class="row">
+
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <label class="form-label" for="form3Example1">Estudiante:</label>
+                          <input type="text" formControlName="name" id="form3Example1" class="form-control" placeholder="{{nameCustomer}}" /> <!--placeholder="{{nameCustomer}}"-->
+                          <span class="text-danger">{{getErrorsFrom('name')}}</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <label class="form-label" for="form3Example3">Numero de identificación:</label>
+                          <input type="text" formControlName="cardId" id="form3Example3" class="form-control" placeholder="{{cardIdCustomer}}"/>
+                          <!--<p>{{cardIdCustomer}}</p>-->
+                          <span class="text-danger">{{getErrorsFrom('cardId')}}</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                         <!-- <label class="form-label" for="form3Example2">Nombre de la carrera profesional</label>
+                          <input type="email" formControlName="email" id="form3Example2" 
+                          class="form-control" placeholder="ingenieria de sistemas,...."
+                          />  [ngClass]="{'error': isTochedField(registerForm, 'email')}" -->
+
+                          <label class="form-label" for="form3Example2">Selecciona una carrera profesional:</label>
+                          <select class="form-select" id="form3Example2" formControlName="professionalCareersId" (change)="valueSelectedCareers($event)">
+                            <option value="" disabled selected>Seleccione una opcion...</option>
+                            <option *ngFor="let careers of listProfessionalCareers" [value]="[careers.id]">{{careers.name}}</option>
+                          </select>
+                          <span class="text-danger">{{getErrorsFrom('email')}}</span>
+                        </div>
+                    </div>
+
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <!--<label class="form-label" for="form3Example2">Ciclo profesional</label>
+                          <input type="text" formControlName="username" id="form3Example2" class="form-control" placeholder="selected Tecnico, tecnologo o profesional" />
+                        -->
+                          <label class="form-label" for="form3Example2">Selecciona un ciclo profesional:</label>
+                          <select class="form-select" id="form3Example2" formControlName="cycleId" (change)="valueSelectedCycle($event)"> 
+                            <option value="" disabled selected>Seleccione una opcion...</option>
+                            <option *ngFor="let cycle of listProfessionalCycle" [value]="[cycle.id]">{{cycle.name}}</option>
+                          </select>
+                          <span class="text-danger">{{getErrorsFrom('username')}}</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+                        <div class="form-outline">
+                          <label class="form-label" for="form3Example2">Selecciona un semestre:</label>
+                          <select class="form-select" id="form3Example2" formControlName="semesterId" (change)="valueSelectedSemester($event)">
+                            <option value="" disabled selected>Seleccione una opcion...</option>
+                            <option *ngFor="let semester of listSemester" [value]="[semester.id]">{{semester.numberSemester}}</option>
+                          </select>
+                          <span class="text-danger">{{getErrorsFrom('numberCellPhone')}}</span>
+                        </div>
+                      </div>
+
+                      <div class="col-md-6 mb-4">
+                          <div class="form-outline">
+                            <!--<label class="form-label" for="form3Example2">Fecha a entregar</label>
+                            <input type="password" formControlName="password" id="form3Example2" class="form-control" placeholder="Selected 1 a 15 dias" />
+                          -->
+                            <label class="form-label" for="form3Example2">Selecciona cuantos dias deseas reservar:</label>
+                            <select class="form-select" id="form3Example2" formControlName="dayId" (change)="valueSelectedDay($event)">
+                              <option value="" disabled selected>Seleccione una opcion...</option>
+                              <option value="dia1">1 día</option>
+                              <option value="dia2">2 días</option>
+                              <option value="dia3">3 días</option>
+                              <option value="dia4">4 días</option>
+                              <option value="dia5">5 días</option>
+                              <option value="dia6">6 días</option>
+                              <option value="dia7">7 días</option>
+                              <option value="dia8">8 días</option>
+                              <option value="dia9">9 días</option>
+                              <option value="dia10">10 días</option>
+                              <option value="dia11">11 días</option>
+                              <option value="dia12">12 días</option>
+                              <option value="dia13">13 días</option>
+                              <option value="dia14">14 días</option>
+                              <option value="dia15">15 días</option>
+                            </select>
+                            <span class="text-danger">{{getErrorsFrom('password')}}</span>
+                          </div>
+                        </div>
+                    </div>
+                  </form>
+                </div>
+              <!--</div>
+            </div>-->
+          </div>
+
+
+        <!-- **************** -->
+        </div>
+
+        <div class="modal-footer" style="justify-content: center">
+            <!-- Submit button *ngIf="reservesSaved == false" data-bs-dismiss="modal" -->
+              <button data-bs-dismiss="modal" type="submit" class="btn btn-primary btn-block mb-4 " (click)="registerReserve()"> <!-- (click)="registerReserve()" -->
+                Confirmar reserva
+              </button>
+          <!-- 
+<button type="button" pButton pRipple label="Show" class="p-button-success"></button>
+            como colocar un calendario en angular
+            https://www.youtube.com/results?search_query=como+seleccionar+una+fecha+de+un+calendario+en+angular
+            https://www.youtube.com/watch?v=TRUTikzpC5Q&list=RDLVMQ2zu5_oPz4&index=11
+
+          -->
+          <!--<button type="button" class="btn btn-color" data-bs-dismiss="modal">Cerrar</button>-->
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ****************** ESTE PAGINA ES PARA MOSTRAR LA "FACTURA" CON LOS DETALLES DE LA RESERVA *******************-->
+
+<!-- 
+  aqui puedo colocar mas informacion sobre la reserva
+  nombre de usuario, los libros y la fecha
+-->
+<!-- ESTE SERIA EL CODIGO QR 
+*ngIf="reservesSaved == true"
+-->
+<div *ngIf="reservesSaved == true">
+  <div class="container-reserves-details">
+    <h1>Código de reserva: {{numberReserves}}</h1>
+  </div>
+
+  <div class="container-reserves-details">
+    <h2 style="color: gray; margin-bottom: 20px;">Información estudiante: </h2>
+    <p><b style="color: rgb(71, 71, 71)">Identificación:</b> {{cardIdCustomer}}</p>
+    <p><b style="color: rgb(71, 71, 71)">Nombre:</b> {{nameCustomer}}</p>
+    <p><b style="color: rgb(71, 71, 71)">Correo Electronico:</b> {{emailCustomer}}</p>
+    <p><b style="color: rgb(71, 71, 71)">Carrera Profesional:</b> {{professionalCareersName}}</p>
+    <p><b style="color: rgb(71, 71, 71)">Ciclo:</b> {{professionalCycleName}}</p>
+    <p><b style="color: rgb(71, 71, 71)">Semestre:</b> {{numberSemester}}</p>
+  </div>
+
+  <div class="container-reserves-details">
+    <h2 style="color: gray">Detalle reserva: </h2>
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col" class="thead-th">Codigo libro</th>
+        <th scope="col" class="thead-th">Nombre libro</th>
+        <th scope="col" class="thead-th">Autor</th>
+        <th scope="col" class="thead-th">Cantidad unidades</th>
+      </tr>
+      </thead>
+      <tbody>
+  
+      <tr *ngFor="let book of booksArray">
+        <th scope="row"># {{book.bookId}}</th>
+        <td>{{book.title}}</td>
+        <td>{{book.author}}</td>
         <td>{{book.quantity}}</td>
       </tr>
   
       </tbody>
     </table>
-  
-    <button type="button" class="btn btn-info" (click)="registerReserve()">Realizar reserva</button>
+
+  </div>
 </div>
-  
-<!-- 
-  aqui puedo colocar mas informacion sobre la reserva
-  nombre de usuario, los libros y la fecha
--->
-<!-- ESTE SERIA EL CODIGO QR -->
-<h1 *ngIf="reservesSaved == true">Tu código de reserva es: {{numberReserves}}. Guardalo por favor</h1>

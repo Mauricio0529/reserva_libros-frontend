@@ -7,6 +7,7 @@ import { AuthLoginResponse } from '../models/authLoginResponse';
 import { TokenService } from './token.service';
 import { RegisterRequest } from '../models/registerRequest';
 import { RegisterResponse } from '../models/registerResponse';
+import { CustomerResponseDto } from '../models/customerResponseDto';
 
 const { apiUrl } = environment;
 
@@ -46,4 +47,12 @@ export class AuthService {
     return this.http.post<RegisterResponse>(`${apiUrl}auth/register`, customerDto);
   }
 
+  /**
+   * Actualizar contraseña de un usuario
+   * @param customerDto Usuario a actualizar
+   * @returns Usuario modificado
+   */
+  public updatePassword(customerDto: CustomerResponseDto): Observable<RegisterResponse> {
+    return this.http.patch<RegisterResponse>(`${apiUrl}auth/update-password-customer`, customerDto);
+  }
 }

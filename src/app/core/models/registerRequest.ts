@@ -8,5 +8,5 @@ export interface RegisterRequest {
     username: string;
     email: string;
     numberCellPhone: string;
-    // password: string;
+    password: string;  //
 }

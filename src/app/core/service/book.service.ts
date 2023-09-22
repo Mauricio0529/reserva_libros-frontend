@@ -15,6 +15,7 @@ const { apiUrl } = environment;
 
 export class BookService {
 
+  // El numero valor inicial GLOBAL del contador
   private numberBookToReserves = new BehaviorSubject(0);
   /**
    * el BehaviorSubject se comportara como un observable .asObservable()
@@ -27,9 +28,10 @@ export class BookService {
   }
 
   // BookRegisterRequest[]
+  // BookRegisterRequest  
   // BookResponse
-  public getAll(): Observable<BookRegisterRequest> {
-    return this.http.get<BookRegisterRequest>(`${apiUrl}libro`);
+  public getAll(): Observable<BookResponse> {
+    return this.http.get<BookResponse>(`${apiUrl}libro`);
   }
 
   /**
@@ -42,6 +44,10 @@ export class BookService {
   /**
    * Agregar numero de reserva que se va generando en el carrito de reservas
    * @param numberBook Numero total de la lista de reservas
+   *
+   * EN ESTE METODO NO SE DISMINUYE EL CONTADOR, YA QUE AL MOMENTO DE ELIMINAR UN PRODUCTOR SELECCIONADO.
+   * CON BASE A ESTO, SE VUELVE A ESTABLECER LA LISTA EN EL LOCALSTORAGE SIN EL PRODUCTO SELECCIONADO,
+   * YA QUE EN EL COMPONENTE SE ELIMINA EL OBJETO(PRODUCTO) DE LA LISTA DEL LOCALSTORAGE.
    */
   public setNumberBookReserves(): void {
     
@@ -49,6 +55,7 @@ export class BookService {
     let bookReserves: Array<BookReservesRequest> = JSON.parse(localStorage.getItem("booksReserva"));
     
 
+    // SI ESTO ES VACIO ES 0
     if(!bookReserves) {
       this.numberBookToReserves.next(0);
       return;

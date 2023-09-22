@@ -1,0 +1,23 @@
+.container-tb {
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 97%;
+}
+
+.thead-th {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    font-size: 17px;
+}
+
+.btn-color {
+    color: #fff;
+    background: #5cafeb;
+    font-weight: bold;
+}
+
+.btn-color:hover {
+    color: #fff;
+    background: #387eb0;
+}

@@ -9,6 +9,14 @@ import { AuthModule } from './feature/auth/auth.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from "@angular/common/http";
 import { AuthInterceptor } from './core/interceptor/auth.interceptor';
 
+// TOAST
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { timeout } from 'rxjs';
+
+// NUEVO PARA LAS CATEGORIAS DE CATALOGO
+//import { SlickCarouselModule } from 'ngx-slick-carousel';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -18,7 +26,12 @@ import { AuthInterceptor } from './core/interceptor/auth.interceptor';
     BrowserModule,
     AppRoutingModule,
     AuthModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      //preventDuplicates: true
+    }),
+    //SlickCarouselModule
   ],
 
   providers: [

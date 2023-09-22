@@ -2,30 +2,39 @@
     <app-navbar></app-navbar>
 </header>
 
-<div>
-    <table class="table">
+<h1 style="
+margin-top: 120px; 
+font-size: 35px; 
+margin-left: 30px;
+margin-bottom: 10px;
+color: rgba(54, 54, 54, 0.817); 
+font-weight: bold;">Historial</h1>
+
+<div class="container-tb">
+    <table class="table table-hover">
       <thead>
       <tr>
-        <th scope="col">Codigo Factura</th>
-        <th scope="col">Cedula cliente</th>
-        <th scope="col">Fecha reserva</th>
-        <th scope="col">Fecha entrega</th>
-        <th scope="col">Total</th>
-        <th scope="col">Ver detalles</th>
+        <th scope="col" class="thead-th">Codigo Factura</th>
+        <th scope="col" class="thead-th text-center">Fecha reserva</th>
+        <th scope="col" class="thead-th text-center">Fecha entrega</th>
+        <th scope="col" class="thead-th text-center">Total</th>
+        <th scope="col" class="thead-th text-center">Ver detalles</th>
       </tr>
       </thead>
+
       <tbody>
-  
-  
-      <tr class="table-success" *ngFor="let history of historyReserves">
-        <td>{{history.id}}</td>
-        <td>{{history.customerCardId}}</td>
-        <td>{{history.dateDelivery}}</td>
-        <td>{{history.dateReserves}}</td>
-        <td>{{history.totalReserves}}</td>
-        <td><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#lista-books" (click)="showBooksReserved(history.bookReservesEntities)">Mostrar</button></td>
+      <tr *ngFor="let history of historyReserves">
+        <th scope="row"># {{history.id}}</th>
+        <td class="text-center">{{history.dateDelivery}}</td>
+        <td class="text-center">{{history.dateReserves}}</td>
+        <td class="text-center">{{history.totalReserves}}</td>
+        <td class="text-center">
+          <button type="button" class="btn btn-color" 
+          data-bs-toggle="modal" data-bs-target="#lista-books"
+          (click)="showBooksReserved(history.bookReservesEntities)">Mostrar</button>
+        </td>
       </tr>
-  
+
       </tbody>
     </table>
   
@@ -34,9 +43,10 @@
 
   
 <!--
-  MODAL PARA VER LOS LIBROS
+  MODAL PARA VER LOS DETALLES DE LOS LIBROS DE EL HISTORIAL
+  data-bs-backdrop="static" data-bs-keyboard="false"
 -->
-<div class="modal fade" data-bs-backdrop="static" data-bs-keyboard="false" id="lista-books" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade"  id="lista-books" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-xl">
       <div class="modal-content">
         <div class="modal-header">
@@ -48,26 +58,23 @@
             <thead>
             <tr>
                 <th scope="col">Codigo de libro</th>
-                <th scope="col">Usuario</th>
                 <th scope="col">Titulo</th>
+                <th scope="col">Autor</th>
                 <th scope="col">Cantidad</th>
             </tr>
             </thead>
             <tbody>
-            <tr class="table-success" *ngFor="let book of bookReserves">
-              <td>{{book.bookId}}</td>
-              <td>{{nameCustomer}}</td>
-              <td>
-                <img src="{{book.imagePath}}" style="width: 5rem; height: 5rem;" class="card-img-top" alt="...">
-                {{book.title}}
-              </td>
+            <tr *ngFor="let book of bookReserves">
+              <th scope="row">{{book.bookId}}</th>
+              <td>{{book.title}}</td>
+              <td>{{book.author}}</td>
               <td>{{book.quantity}}</td>
             </tr>
             </tbody>
           </table>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+          <button type="button" class="btn btn-color" data-bs-dismiss="modal">Cerrar</button>
         </div>
       </div>
     </div>

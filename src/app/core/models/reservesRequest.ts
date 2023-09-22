@@ -7,12 +7,17 @@ export interface ReservesRequest {
 
     totalReserves: number;
 
+    professionalCareers?: number;
+
+    professionalCycle?: number;
+
+    semester?: number;
+
     // fecha entrega
     dateDelivery: Date;
 
     // fecha reserva
     dateReserves: Date;
-
 
     bookReservesEntities: Array<BookReservesRequest>;
 }

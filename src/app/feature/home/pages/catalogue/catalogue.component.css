@@ -1,0 +1,128 @@
+.card {
+    cursor: pointer;
+    border-radius: 5px; 
+}
+
+.card:hover {
+    /*box-shadow: 0px 5px 10px 0px rgba(0, 0, 0, 0.5);*/
+    /*transform: scale(1.1);*/
+    box-shadow: -10px -10px 15px rgba(174, 173, 173, 0.373), /*-10px -10px 15px rgba(147, 146, 146, 0.12)*/
+    10px 10px 15px rgba(70,70,70,0.12);
+}
+
+.imgCard {
+    width: 60%; 
+    height: 70%; 
+    margin: 0 auto; 
+    padding-bottom: 1px;
+    
+}
+
+.linea-con-texto {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    padding-top: 70px;
+    padding-bottom: 70px;    
+    font-size: 2em;
+    font-weight: bold;
+    color: rgb(44, 44, 44);
+}
+
+.linea-con-texto hr {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    margin: 0 10px;
+}
+
+.text-showBooks {
+    cursor: pointer; 
+    /*margin-top: -50px;*/
+    margin-bottom: 50px;
+}
+
+.text-showBooks:hover {
+    font-weight: bold;
+}
+
+/**
+********************************
+*/
+
+.carousel-inner {
+    width: 100%;
+    overflow: hidden;
+  }
+  
+  .carousel-item {
+    display: none;
+  }
+  
+  .carousel-item.active {
+    display: block;
+  }
+  
+  .carousel-item .col-md-6 {
+    float: left;
+    width: 50%;
+  }
+  
+  .carousel-control-prev,
+  .carousel-control-next {
+    width: auto;
+  }
+  
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    width: 20px;
+    height: 20px;
+  }
+  
+.box-area {
+  text-align: center;
+}
+
+.banner-area {
+  margin-top: 150px;
+  background-image: url(../../../../../assets/banners.jpg);
+  background-size: cover;
+  background-position: center center;
+  height: 80vh;
+  width: 100%;
+  /*position: fixed;*/
+}
+
+.banner-area:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  background: #ffffff;
+  opacity: .7;
+  z-index: -1;
+}
+
+.banner-area h2 {
+  padding-top: 0;
+  font-size: 80px;
+  color: #fff;
+}
+
+/* tu-componente.component.css */
+/*.sweet-alert-custom .sweet-alert-image {
+    float: left; /* Alineamos la imagen a la izquierda /
+    width: 100px; /* Ajusta el tamaño de la imagen según tus necesidades/
+    height: 100px;
+    margin-right: 15px; /* Espacio entre la imagen y el texto /
+}
+  
+.sweet-alert-text {
+    display: flex;
+    align-items: center; / Centramos verticalmente el texto con la imagen /
+    
+}
+*/
+  

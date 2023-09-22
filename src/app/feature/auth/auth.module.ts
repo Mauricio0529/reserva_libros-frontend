@@ -9,11 +9,13 @@ import { RegisterComponent } from './pages/register/register.component';
  * formulario reactivo
  */
 import { ReactiveFormsModule } from '@angular/forms';
+import { UpdatePasswordComponent } from './pages/updateCustomerPassword/update-password/update-password.component';
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    UpdatePasswordComponent
   ],
   exports: [
     LoginComponent,

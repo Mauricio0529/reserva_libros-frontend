@@ -12,7 +12,7 @@ export interface BookReservesRequest {
     /**
      * Codigo id de un libro
      */
-    bookId?: number; //
+    bookId?: number; // localStorage
 
     /**
      * Imagen del libro
@@ -22,11 +22,14 @@ export interface BookReservesRequest {
     /**
      * Titulo del libro
      */
-    title?: string;
+    title?: string; // localStorage
 
     /**
      * Cantidad por unidad en el carrito de compra
      */
-    quantity: number; //
+    quantity: number; // localStorage
+
+    // esto es de la base de datos, para poder mostrarlo en el historial
+    author?: string; // localStorage
 
 }
