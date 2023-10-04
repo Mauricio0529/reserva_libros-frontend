@@ -1,0 +1,52 @@
+<header>
+    <app-navbar></app-navbar>
+</header>
+
+<!-- ****************** ESTE PAGINA O MODAL ES PARA MOSTRAR LA "FACTURA" CON LOS DETALLES DE LA RESERVA *******************-->
+<div>
+  
+    <h1 class="title-reserves">Mi Reservas 
+      <p *ngIf="statusReserve == IN_PROGRESS" style="color: rgb(202, 202, 33); font-size: 30px;">Estado: En proceso</p>
+      <p *ngIf="statusReserve == ACCEPTED" style="color: rgb(33, 192, 33); font-size: 30px;">Estado: Aprobado</p>
+      <p *ngIf="statusReserve == FINALIZED" style="color: rgba(30, 70, 164, 0.846); font-size: 30px;">Estado: Finalizado</p>
+    </h1>
+
+    <div class="container-reserves-details">
+      <h1>Código de reserva: {{numberReserves}}</h1>
+    </div>
+  
+    <div class="container-reserves-details">
+      <h2 style="color: gray; margin-bottom: 20px;">Información estudiante: </h2>
+      <p><b style="color: rgb(71, 71, 71)">Identificación:</b> {{cardIdCustomer}}</p>
+      <p><b style="color: rgb(71, 71, 71)">Nombre:</b> {{nameCustomer}}</p>
+      <p><b style="color: rgb(71, 71, 71)">Correo Electronico:</b> {{emailCustomer}}</p>
+      <p><b style="color: rgb(71, 71, 71)">Carrera Profesional:</b> {{professionalCareersName}}</p>
+      <p><b style="color: rgb(71, 71, 71)">Ciclo:</b> {{professionalCycleName}}</p>
+      <p><b style="color: rgb(71, 71, 71)">Semestre:</b> {{numberSemester}}</p>
+    </div>
+  
+    <div class="container-reserves-details">
+      <h2 style="color: gray">Detalle reserva: </h2>
+      <table class="table">
+        <thead>
+        <tr>
+          <th scope="col" class="thead-th">Codigo libro</th>
+          <th scope="col" class="thead-th">Nombre libro</th>
+          <th scope="col" class="thead-th">Autor</th>
+          <th scope="col" class="thead-th">Cantidad unidades</th>
+        </tr>
+        </thead>
+        <tbody>
+    
+        <tr *ngFor="let book of booksArray">
+          <th scope="row"># {{book.bookId}}</th>
+          <td>{{book.title}}</td>
+          <td>{{book.author}}</td>
+          <td>{{book.quantity}}</td>
+        </tr>
+    
+        </tbody>
+      </table>
+  
+    </div>
+  </div>

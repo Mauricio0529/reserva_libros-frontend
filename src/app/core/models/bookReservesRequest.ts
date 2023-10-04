@@ -15,19 +15,19 @@ export interface BookReservesRequest {
     bookId?: number; // localStorage
 
     /**
-     * Imagen del libro
+     * Cantidad por unidad en el carrito de compra
      */
-    imagePath?: string;
-
+    quantity: number; // localStorage
+    
     /**
      * Titulo del libro
      */
     title?: string; // localStorage
 
     /**
-     * Cantidad por unidad en el carrito de compra
-     */
-    quantity: number; // localStorage
+     * Imagen del libro
+    */
+    imagePath?: string;
 
     // esto es de la base de datos, para poder mostrarlo en el historial
     author?: string; // localStorage

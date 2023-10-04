@@ -9,24 +9,21 @@ import { HitoryReservesComponent } from './pages/hitory-reserves/hitory-reserves
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { ReserveStatusComponent } from './pages/reserve-status/reserve-status.component';
-// NUEVO
-//import { ToastModule } from 'primeng/toast';
+import { ReserveStatusDetailsComponent } from './pages/reserve-status/reserve-status-details/reserve-status-details.component';
 
-// NUEVO PARA LAS CATEGORIAS DE CATALOGO
-//import { SlickCarouselModule } from 'ngx-slick-carousel';
 @NgModule({
   declarations: [
     CatalogueComponent,
     NavbarComponent,
     ShoppingCartComponent,
     HitoryReservesComponent,
-    ReserveStatusComponent
+    ReserveStatusComponent,
+    ReserveStatusDetailsComponent
   ],
   imports: [
     CommonModule,
     HomeRoutingModule,
     ReactiveFormsModule
-    //SlickCarouselModule // NUEVO PARA LAS CATEGORIAS DE CATALOGO
   ]
 })
 export class HomeModule { }

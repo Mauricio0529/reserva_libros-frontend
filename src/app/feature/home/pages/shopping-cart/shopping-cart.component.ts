@@ -60,7 +60,7 @@ export class ShoppingCartComponent implements OnInit {
   public booksArray: Array<BookReservesRequest>;
   
   constructor(
-    private token: TokenService, 
+    private token: TokenService,
     private reservesService: ReservesService,
     private professionalCareersService: ProfessionalCareersService,
     private professionalCycleService: ProfessionalCycleService,

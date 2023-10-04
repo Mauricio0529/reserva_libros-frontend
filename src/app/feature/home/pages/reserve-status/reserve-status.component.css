@@ -1,13 +1,17 @@
-/**
-https://getbootstrap.com/docs/5.0/components/navbar/
-https://therichpost.com/angular-13-bootstrap-5-step-form-with-tabs/
-https://ngx-toastr.vercel.app/
+.text-reserves-pending {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 35px;
+    color: rgba(54, 54, 54, 0.817); 
+    font-weight: bold;
+}
 
-E-COMMERCE
-https://therichpost.com/angular-11-bootstrap-5-ecommerce-template-free-download/#comment-114246
-https://therichpost.com/angular-12-j-shop-ecommerce-template-free/#comment-114229
+.title {
+    font-size: 37px;
+    font-weight: bold;
+    color: rgb(64, 64, 64)
+}
 
-*/
 ::-webkit-scrollbar {
     width: 6px
 }
@@ -110,5 +114,13 @@ https://therichpost.com/angular-12-j-shop-ecommerce-template-free/#comment-11422
     .custom-button {
         font-size: 10px; /* Ajusta el tamaño de fuente para pantallas más pequeñas */
         height: 35px;
+    }
+
+    .text-reserves-pending {
+        font-size: 22px;
+    }
+
+    .title {
+        font-size: 24px;
     }
 }
